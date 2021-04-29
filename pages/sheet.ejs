@@ -29,18 +29,24 @@ function createDefaultRows() {
     addAttribute( "Intelligence" );
     addAttribute( "Wisdom" );
     addAttribute( "Charisma" );
+    addAttribute( "Hits" );
 }
+
 function addAttribute( name ) {
+    // Get tbody and create new row
     let tbody = document.getElementById('sheet-table-body');
     let newRow = document.createElement("tr");
+    // Create label cell
     let labelCell = document.createElement("td");
     labelCell.classList.add("label");
     labelCell.innerText = name + ":"
+    // Create value cell
     let valueCell = document.createElement("td");
     let newInput = document.createElement("input");
     newInput.type = "text";
     newInput.name = name.toLowerCase();
     valueCell.appendChild( newInput );
+    // Add cells to row and row to table
     newRow.appendChild( labelCell );
     newRow.appendChild( valueCell );
     tbody.appendChild( newRow );
