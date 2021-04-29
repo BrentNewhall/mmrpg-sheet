@@ -5,10 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MMRPG Character Sheet</title>
+    <style>
+        input[type=text] {
+            width: 5em;
+        }
+    </style>
 </head>
-<body>
+<body onload="createDefaultRows()">
 
 <h1>Character Sheet</h1>
 
+<table>
+    <tbody id="sheet-table-body">
+    </tbody>
+</table>
+
 </body>
+<script>
+function createDefaultRows() {
+    addAttribute( "Strength" );
+    addAttribute( "Dexterity" );
+    addAttribute( "Constitution" );
+    addAttribute( "Intelligence" );
+    addAttribute( "Wisdom" );
+    addAttribute( "Charisma" );
+}
+function addAttribute( name ) {
+    let tbody = document.getElementById('sheet-table-body');
+    let newRow = document.createElement("tr");
+    let labelCell = document.createElement("td");
+    labelCell.classList.add("label");
+    labelCell.innerText = name + ":"
+    let valueCell = document.createElement("td");
+    let newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.name = name.toLowerCase();
+    valueCell.appendChild( newInput );
+    newRow.appendChild( labelCell );
+    newRow.appendChild( valueCell );
+    tbody.appendChild( newRow );
+}
+</script>
 </html>
